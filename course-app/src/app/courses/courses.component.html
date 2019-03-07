@@ -1,0 +1,14 @@
+<h2>{{title}}</h2>
+<h3 [textContent]="title"></h3>
+<input #courseNameInput type="text" (keyup.enter)="coursesKeyUp($event)" [(ngModel)]="courseName" />
+<button class="btn btn-primary" (click)="addCourses()">
+  Add Courses
+</button>
+<ul class="list-group">
+  <ng-container *ngFor="let course of courses; index as i">
+    <li class="list-group-item" >
+      <course [course]="course" (selected)="courseSelected($event)"></course>
+    </li>
+    <button class="btn btn-danger" (click)="delete(i)">Delete</button>
+  </ng-container>
+</ul>

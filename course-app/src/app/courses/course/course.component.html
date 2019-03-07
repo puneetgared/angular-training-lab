@@ -1,0 +1,8 @@
+<div (click)="courseSelected()">
+    <div><b>CourseName : </b>{{course.name | uppercase }}</div>
+    <div><b>Author : </b>{{course.author}}</div>
+    <div><b>Price : </b>{{course.price | number:'6.1-1' }}</div>
+    <div><b>Location : </b>{{course.location}}</div>
+    <div><b>Summary : </b>{{course.description | summary:'70'}}</div>
+</div>
+
