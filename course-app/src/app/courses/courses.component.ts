@@ -1,6 +1,7 @@
 import { Course } from './course/course.component';
 import { CoursesService } from './../courses.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'courses',
@@ -11,13 +12,36 @@ export class CoursesComponent implements OnInit {
 
   title = "Angular Courses Available"
   courseName;
-  courses: Array<Course>
+ private courses: Array<Course>
+ private courseId : number
   
-  constructor(private coursesService : CoursesService){
+  constructor(private coursesService : CoursesService,
+              private activatedRoute : ActivatedRoute,
+              private router : Router
+            ){
       this.courses = coursesService.getCourses()
   }
 
-  ngOnInit(){}
+  ngOnInit(){
+
+    this.router.navigate(["course",1313],
+    {queryParams : {name : "Angular",
+                    language : "Javascript",
+                    price : 300
+                    }});
+
+    this.activatedRoute.params.subscribe(param => {
+      console.log("Only Param",param)
+    })
+    this.activatedRoute.paramMap.subscribe(params => {
+      console.log('Courses Params', params)
+      this.courseId = +params.get('courseId')
+    })
+
+    this.activatedRoute.queryParamMap.subscribe(queryParams => {
+        console.log("Query Params", queryParams)
+    })
+  }
 
   coursesKeyUp($event){
     // this.courseName = $event.target.value;

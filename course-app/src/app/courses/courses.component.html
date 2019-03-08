@@ -4,6 +4,8 @@
 <button class="btn btn-primary" (click)="addCourses()">
   Add Courses
 </button>
+<a [routerLink]="'/signup'" [queryParams]="{name : 'puneet'}" >Signup</a>
+<!-- Course Number {{courseId}} -->
 <ul class="list-group">
   <ng-container *ngFor="let course of courses; index as i">
     <li class="list-group-item" >
