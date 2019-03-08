@@ -41,6 +41,18 @@ export class CoursesComponent implements OnInit {
     this.activatedRoute.queryParamMap.subscribe(queryParams => {
         console.log("Query Params", queryParams)
     })
+
+
+    //Calling the HttpService
+    this.coursesService.getTodos()
+                      .subscribe(
+                        success => {
+                          console.log("Todo in courses", success);
+                      },
+                      error => {
+                          console.log("Error Recieved", error)
+                          
+                      })
   }
 
   coursesKeyUp($event){
