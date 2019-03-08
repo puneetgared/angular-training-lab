@@ -12,8 +12,8 @@ export class CoursesComponent implements OnInit {
 
   title = "Angular Courses Available"
   courseName;
- private courses: Array<Course>
- private courseId : number
+  courses: Array<Course>
+  courseId : number
   
   constructor(private coursesService : CoursesService,
               private activatedRoute : ActivatedRoute,

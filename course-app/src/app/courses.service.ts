@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map,filter } from 'rxjs/operators';
+
 
 @Injectable()
 export class CoursesService {
@@ -28,8 +30,20 @@ export class CoursesService {
     }
 
     getTodos() : Observable<any>{
+
+        console.log('Test map only',[10,20,30].map(item => item*100))
+
         return this.httpClient
             .get("https://jsonplaceholder.typicode.com/todos")
+            .pipe(
+                map(res => {
+                    console.log('Map of todos',res);
+                    return res;
+                }),
+                filter(res => {
+                    return true;
+                })
+            )
             
     }
 }
